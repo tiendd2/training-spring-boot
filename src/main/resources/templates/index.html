@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Loda To-do</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <!--css-->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+
+    <!--js-->
+    <script th:src="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+<h1 th:text="#{loda.message.hello}"></h1>
+
+<a th:href="@{/addBook}" th:text="#{loda.value.addBook}" class="btn btn-success"></a>
+<a th:href="@{/logout}" th:text="#{loda.value.logOut}" class="btn btn-success"></a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Detail</th>
+        <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${bookList}">
+        <th scope="row"><span th:text="*{book.getId()}"></span></th>
+        <td><span th:text="*{book.getName()}"></span></td>
+        <td><span th:text="*{book.getDetail()}"></span></td>
+        <td><span th:text="*{book.getStatusBook()}"></span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+</html>
